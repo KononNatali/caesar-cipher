@@ -1,15 +1,21 @@
 pipeline {
     agent any
+
     stages {
+        stage('Preparing gradlew') {
+            steps {
+                sh 'chmod +x gradlew'
+             }
+        }
         stage ('Test') {
             steps {
-                sh 'gradle test'
+                sh './gradlew test'
             }
         }
         //Build and package the project
         stage ('Build') {
             steps {
-                sh 'gradle build'
+                sh './gradlew build'
             }
         }
         //Outputs the result of the final build
