@@ -3,13 +3,13 @@ pipeline {
     stages {
         stage ('Test') {
             steps {
-                sh './gradlew test'
+                sh 'gradle test'
             }
         }
         //Build and package the project
         stage ('Build') {
             steps {
-                sh './gradlew build'
+                sh 'gradle build'
             }
         }
         //Outputs the result of the final build
@@ -60,5 +60,5 @@ pipeline {
             archiveArtifacts artifacts: 'build/libs/caesar-cipher.jar', onlyIfSuccessful: true
         }
     }
-    
+
    }
